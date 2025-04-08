@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Espacial - Juego de Naves</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Puedes agregar estilos específicos aquí si lo deseas -->
+  <link href="https://fonts.googleapis.com/css2?family=Unica+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Encabezado y menú (manteniendo la misma estética) -->
+  <header>
+    <h1 class="glitch" data-text="Sistema Espacial">Sistema Espacial</h1>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">VOLVER</a></li>
+        <!-- Puedes agregar otros enlaces si lo deseas -->
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Área del juego de disparos -->
+  <main>
+    <section id="spaceshipGame">
+      <!-- Canvas para el juego -->
+      <canvas id="spaceshipCanvas"></canvas>
+      <div id="gameInfo">
+        <p>Usa las flechas izquierda/derecha para moverte y la barra espaciadora para disparar.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 - Hecho en el borde del abismo</p>
+  </footer>
+
+  <!-- Script del juego de naves -->
+  <script src="spaceship.js"></script>
+</body>
+</html>

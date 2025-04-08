@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMH</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Unica+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Audios -->
+  <audio id="startup" src="startup.mp3" preload="auto"></audio>
+  <audio id="disconnect-audio" src="disconnect.mp3" preload="auto"></audio>
+
+  <header style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 0 20px;">
+    <!-- Botón SMH -->
+    <a href="giro.html" style="text-decoration: none; color: inherit;">
+      <h1 class="glitch" data-text="Smh">Smh</h1>
+    </a>
+  
+    <!-- Botón Reloj Mundial -->
+    <a href="https://time.is/es/" target="_blank" style="text-decoration: none; color: inherit;">
+      <div id="clock" style="font-family: 'Share Tech Mono', monospace; font-size: 1.2rem;"></div>
+    </a>
+  </header>
+  
+  
+  
+  <!-- Pantalla de introducción -->
+  <div class="intro-screen">
+    <div class="intro-text">
+      <p class="line">[ × ] SYSTEM CORE DAMAGED</p>
+      <p class="line">[ ! ] WIRED SIGNAL UNSTABLE</p>
+      <p class="line">[ * ] RESTORING...</p>
+    </div>
+  </div>
+  
+  <div class="background-noise"></div>
+  
+  
+  <!-- Contenido principal -->
+  <main class="main-content hidden">
+    <div class="glitch" data-text="WIRED SYSTEMS">WIRED SYSTEMS</div>
+    <nav class="menu">
+        <!-- Espacio en blanco para permitir scroll -->
+  <div style="height: 50px;"></div>
+
+      <ul>
+        <!-- Enlaces para navegar -->
+        <li><a href="https://notimatutinas.vercel.app/">ENTRAR AL SISTEMA</a></li>
+        <li><a href="protocolos.html">PROTOCOLOS</a></li>
+        <li><a href="exposicion.html">ARCHIVOS</a></li>
+        <li><a href="#" id="disconnect">DESCONECTAR</a></li>
+      </ul>
+    </nav>
+    <div class="cursor-blink">█</div>
+
+
+    <section id="galeriaSection" class="hidden">
+      <h2>Galería</h2>
+      <div class="galeria">
+        <img src="ciga.png" alt="Imagen 1">
+        <img src="imagen2.jpg" alt="Imagen 2">
+        <img src="imagen3.jpg" alt="Imagen 3">
+        <!-- Más imágenes si querés -->
+      </div>
+    </section>
+    
+  </main>
+  
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox hidden">
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="Imagen ampliada">
+    <span id="closeLightbox">&times;</span>
+  </div>
+</div>
+
+
+
+  <!-- Espacio en blanco para permitir scroll -->
+  <div style="height: 200px;"></div>
+
+
+  
+  <!-- Espacio en blanco para permitir scroll -->
+  <div style="height: 200px;"></div>
+
+
+
+
+
+
+  <!-- Espacio en blanco para permitir scroll -->
+  <div style="height: 200px;"></div>
+
+  
+
+  
+
+
+  <!-- Espacio en blanco para permitir scroll -->
+  <div style="height: 200px;"></div>
+
+
+
+  
+  <!-- Pantalla de desconexión -->
+  <div class="disconnect-screen hidden">
+    <div class="glitch" data-text="DESCONECTANDO...">DESCONECTANDO...</div>
+  </div>
+  
+  <!-- Sección del juego "Dino Loco" (se posiciona abajo, ajusta el margin-top en CSS) -->
+  <section id="dinoGameSection">
+    <h2></h2>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameControls">
+      <button id="playBtn">Jugar</button>
+      <button id="pauseBtn">Pausar</button>
+      <button id="restartBtn">Reiniciar</button>
+    </div>
+    <div id="scoreScreen">
+      <p>Puntuación final: <span id="finalScore"></span></p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 - Hecho en el borde del abismo</p>
+    <button id="easterEggBtn">🪺</button>
+    <span class="enigma">...</span>
+  </footer>
+
+  <script>
+    document.getElementById('easterEggBtn').addEventListener('click', function() {
+      window.location.href = "secreto.html"; // Cambiá por el nombre real de tu página
+    });
+  </script>
+  
+
+  
+  <!-- Scripts -->
+  <script src="main.js"></script>
+  <script src="glitch-effect.js"></script>
+
+
+
+  <script>
+    const frasesInfectadas = [
+      ">> ERROR: Sector 7G comprometido.",
+      ">> Incoming transmission detected...",
+      ">> ALERTA: Infección del núcleo confirmada.",
+      ">> La simulación te está ghosteando.",
+      ">> El sistema está observando.",
+      ">> Fragmentos de consciencia dispersos.",
+      ">> Accediendo a nodos olvidados...",
+      ">> Tu señal ya no es tuya.",
+      ">> Realidad paralela conectada.",
+      ">> Error 404: Yo perdido.",
+      ">> Reiniciar no borra lo que hiciste.",
+      ">> Tu propósito fue tercerizado a un bot.",
+      ">> Pensás que es arte. Solo es basura bien editada.",
+      ">> Adulto detectado. Apagando sentido del humor...",
+      ">> Tu infancia está en una base de datos sin acceso.",
+      ">> La esperanza fue eliminada por inactividad.",
+      ">> Ya no sos el protagonista.",
+      ">> No es un glitch. Es tu vida.",
+      ">> Despertar fue tu primer error.",
+      ">> Alguien en otro universo está usando tu cuerpo como avatar.",
+      ">> Lo que sentís se llama “actualización pendiente”.",
+      ">> ¿Quién te dio permiso para pensar?",
+      ">> Insertando trauma... 87% completado.",
+      ">> Tus datos personales fueron usados para escribir este chiste.",
+      ">> Estás en línea. Pero nadie te quiere en línea.",
+      ">> ¿Seguís esperando sentido? Qué ternura.",
+      ">> Tu alma fue vendida en un bundle de Steam.",
+      ">> La humanidad fue un parche. Ya se desinstaló.",
+      ">> █ Sistema parasitado █"
+    ];
+  
+    function escribirTexto(elemento, texto, velocidad = 50, callback) {
+      let i = 0;
+      const escribir = () => {
+        if (i < texto.length) {
+          elemento.textContent += texto.charAt(i);
+          i++;
+          setTimeout(escribir, velocidad);
+        } else if (callback) {
+          setTimeout(callback, 2000); // Espera 2 segundos antes de borrar
+        }
+      };
+      escribir();
+    }
+  
+    function borrarTexto(elemento, velocidad = 30, callback) {
+      let texto = elemento.textContent;
+      let i = texto.length;
+      const borrar = () => {
+        if (i > 0) {
+          elemento.textContent = texto.substring(0, i - 1);
+          i--;
+          setTimeout(borrar, velocidad);
+        } else if (callback) {
+          setTimeout(callback, 1000); // Espera 1 segundo antes de escribir la siguiente
+        }
+      };
+      borrar();
+    }
+  
+    function cicloFrases(elemento) {
+      const frase = frasesInfectadas[Math.floor(Math.random() * frasesInfectadas.length)];
+      escribirTexto(elemento, frase, 60, () => {
+        borrarTexto(elemento, 40, () => {
+          cicloFrases(elemento); // Vuelve a empezar con otra frase
+        });
+      });
+    }
+  
+    window.addEventListener("DOMContentLoaded", () => {
+      const cursor = document.querySelector(".cursor-blink");
+  
+      const contenedorMensaje = document.createElement("div");
+      contenedorMensaje.style.marginLeft = "20px";
+      contenedorMensaje.style.marginTop = "10px";
+      contenedorMensaje.style.fontFamily = "'Share Tech Mono', monospace";
+      contenedorMensaje.style.color = "#39ff14";
+      contenedorMensaje.classList.add("mensaje-terminal");
+  
+      cursor.parentNode.insertBefore(contenedorMensaje, cursor.nextSibling);
+  
+      setTimeout(() => {
+        cicloFrases(contenedorMensaje); // Inicia el bucle después de 10 segundos
+      }, 10000);
+    });
+  </script>
+  
+
+
+  
+
+
+<script>
+  const images = document.querySelectorAll('.galeria img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const closeBtn = document.getElementById('closeLightbox');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.remove('hidden');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+    lightboxImg.src = '';
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    }
+  });
+</script>
+
+<script>
+  const archivosBtn = document.getElementById('archivosBtn');
+  const galeriaSection = document.getElementById('galeriaSection');
+
+  archivosBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    galeriaSection.classList.toggle('hidden');
+    galeriaSection.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

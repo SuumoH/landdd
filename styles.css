@@ -1,0 +1,404 @@
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* Estilos globales */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #000000, #0b0b0b 70%);
+  color: #00fff7;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* Reloj minimalista */
+#clock {
+  font-size: 1.2em;
+  color: #00fff7;
+  text-align: right;
+  margin: 10px;
+}
+
+/* Efectos Glitch */
+.glitch {
+  font-size: 3em;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  animation: glitch 2s infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: white;
+  background: transparent;
+  overflow: hidden;
+}
+.glitch::before {
+  animation: glitchTop 1.5s infinite;
+  color: #f0f;
+  clip: rect(0, 900px, 0, 0);
+}
+.glitch::after {
+  animation: glitchBottom 1.5s infinite;
+  color: #0ff;
+  clip: rect(0, 900px, 0, 0);
+}
+@keyframes glitch {
+  0% { transform: none; }
+  20% { transform: skew(-2deg, 0.6deg); }
+  40% { transform: skew(0.8deg, -0.8deg); }
+  60% { transform: skew(-0.3deg, 1deg); }
+  80% { transform: skew(0.2deg, -1deg); }
+  100% { transform: none; }
+}
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
+  50% { clip: rect(0, 9999px, 40px, 0); transform: translate(2px, 2px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
+}
+@keyframes glitchBottom {
+  0% { clip: rect(60px, 9999px, 120px, 0); transform: translate(2px, 2px); }
+  50% { clip: rect(90px, 9999px, 130px, 0); transform: translate(-2px, -2px); }
+  100% { clip: rect(60px, 9999px, 120px, 0); transform: translate(2px, 2px); }
+}
+
+/* Main content */
+main {
+  position: relative;
+  padding: 100px 0;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Background Noise */
+.background-noise {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  background: url('glitched-image.gif');
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: pulse 3s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.15; }
+}
+
+/* Menú */
+.menu {
+  margin-top: 40px;
+}
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu li {
+  margin: 20px 0;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.menu a {
+  color: #00fff7;
+  font-size: 1.3em;
+  text-decoration: none;
+  text-shadow: 0 0 5px #00fff7, 0 0 10px #00fff7;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00fff7;
+  box-shadow: 0 0 8px #00fff7;
+  transition: width 0.3s ease;
+}
+.menu a:hover {
+  opacity: 1;
+  color: #fff;
+  text-shadow: 0 0 7px #0ff, 0 0 15px #0ff;
+}
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* Cursor Blink */
+.cursor-blink {
+  font-size: 2em;
+  color: #00fff7;
+  margin-top: 40px;
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Intro Screen */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00fff7;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  animation: glitchIn 3.5s forwards;
+}
+.intro-text .line {
+  margin: 10px;
+  opacity: 0;
+  animation: flickerLine 0.3s ease forwards;
+}
+.intro-text .line:nth-child(1) { animation-delay: 0.5s; }
+.intro-text .line:nth-child(2) { animation-delay: 1.2s; }
+.intro-text .line:nth-child(3) { animation-delay: 2s; }
+@keyframes flickerLine {
+  0% { opacity: 0; text-shadow: none; }
+  50% { opacity: 0.5; text-shadow: 0 0 5px #00fff7; }
+  100% { opacity: 1; text-shadow: 0 0 8px #00fff7, 0 0 15px #0ff; }
+}
+@keyframes glitchIn {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; display: none; }
+}
+.hidden {
+  display: none !important;
+}
+
+/* Disconnect Screen */
+.disconnect-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ffea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  z-index: 1000;
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: #00ffcc;
+  text-align: right;
+  padding: 10px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Controles del juego */
+#gameControls button {
+  background-color: black;
+  color: #00fff7;
+  border: 1px solid #000000;
+  font-family: 'Share Tech Mono', monospace;
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#gameControls button:hover {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 10px #000000;
+}
+
+/* Sección del juego Dino Loco */
+#dinoGameSection {
+  margin-top: 600px; /* Ajusta este valor para moverlo verticalmente */
+}
+
+
+
+#naveCanvas {
+  background: #000;
+  border: 1px solid #00fff7;
+  display: block;
+  margin: 0 auto;
+}
+
+#naveControls {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#naveControls button {
+  background: #111;
+  color: #0ff;
+  font-family: 'Share Tech Mono', monospace;
+  border: 1px solid #0ff;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+#naveScoreScreen {
+  display: none;
+  color: #0ff;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+
+
+
+.espaciado {
+  margin-top: 500px; /* o más si querés más espacio */
+  margin-bottom: 100px;
+}
+
+
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.galeria img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* Lightbox estilos */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+.lightbox-content {
+  position: relative;
+  animation: zoomIn 0.3s ease;
+}
+
+.lightbox img {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+#closeLightbox {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.galeria img {
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+  border: 2px solid #444;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox-content {
+  position: relative;
+}
+
+.lightbox-content img {
+  max-width: 90%;
+  max-height: 90vh;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+
+#closeLightbox {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+}
+

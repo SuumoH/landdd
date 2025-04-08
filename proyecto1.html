@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DVD Bounce</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+    }
+    #logo {
+      position: absolute;
+      width: 400px;
+      height: 200px;
+      background-image: url('S-6x8.png'); /* <- tu imagen */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="logo"></div>
+
+  <script>
+    const logo = document.getElementById('logo');
+    let x = 10, y = 10;
+    let dx = 2, dy = 2;
+
+    function moveLogo() {
+      const width = window.innerWidth - logo.clientWidth;
+      const height = window.innerHeight - logo.clientHeight;
+
+      x += dx;
+      y += dy;
+
+      if (x <= 0 || x >= width) dx *= -1;
+      if (y <= 0 || y >= height) dy *= -1;
+
+      logo.style.left = x + 'px';
+      logo.style.top = y + 'px';
+
+      requestAnimationFrame(moveLogo);
+    }
+
+    moveLogo();
+  </script>
+</body>
+</html>

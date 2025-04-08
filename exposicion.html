@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARCHIVOS - TERMINAL</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Unica+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #07377e;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 255, 153, 0.1);
+      border-bottom: 1px solid #0a1763;
+    }
+
+    h1.glitch {
+      font-size: 2rem;
+      position: relative;
+      color: #0a1763;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red; }
+      20% { text-shadow: -2px 0 blue; }
+      40% { text-shadow: 2px 2px lime; }
+      60% { text-shadow: -2px -2px magenta; }
+      80% { text-shadow: 1px -1px cyan; }
+      100% { text-shadow: 0 0 white; }
+    }
+
+    main {
+      padding: 40px;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .galeria img {
+      width: 200px;
+      height: auto;
+      cursor: pointer;
+      border: 2px solid #011327;
+      border-radius: 4px;
+      filter: grayscale(30%);
+      transition: all 0.3s ease;
+    }
+
+    .galeria img:hover {
+      filter: none;
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .lightbox.hidden {
+      display: none;
+    }
+
+    .lightbox-content img {
+      max-width: 90%;
+      max-height: 90vh;
+      border: 4px solid #251372;
+      border-radius: 10px;
+    }
+
+    #closeLightbox {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      font-size: 3rem;
+      color: #ff0055;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #0a0b5f;
+      border-top: 1px solid #133677;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+      <h1 class="glitch" data-text="← VOLVER">← VOLVER</h1>
+    </a>
+    <span>ARCHIVOS DEL SISTEMA</span>
+  </header>
+
+  <main>
+    <h2 style="text-align:center;">[...]</h2>
+    <div class="galeria">
+      <img src="ciga.png" alt="Imagen 1" />
+      <img src="aaaaazzzz.png" alt="Imagen 2" />
+      <img src="cartel.png" alt="Imagen 3" />
+      <img src="Pose 2 sticker 2.png" alt="Imagen 4" />
+      <img src="espalda2 sticker.png" alt="Imagen 5" />
+      <img src="pose sticker 1.png" alt="Imagen 6" />
+      <!-- Más imágenes si querés -->
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden">
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Imagen ampliada" />
+      <span id="closeLightbox">&times;</span>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 - Archivos corruptos en restauración.</p>
+  </footer>
+
+  <script>
+    const images = document.querySelectorAll('.galeria img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.remove('hidden');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightboxImg.src = '';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightboxImg.src = '';
+      }
+    });
+  </script>
+</body>
+</html>
